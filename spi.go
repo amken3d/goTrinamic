@@ -1,4 +1,4 @@
-package main
+package goTrinamic
 
 // SPI represents a SPI bus. It is implemented by the machine.SPI type.
 type SPI interface {

@@ -1,4 +1,4 @@
-package main
+package goTrinamic
 
 import (
 	"github.com/orsinium-labs/tinymath"

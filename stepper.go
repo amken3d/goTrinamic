@@ -1,4 +1,4 @@
-package main
+package goTrinamic
 
 const maxVMAX = 8388096
 

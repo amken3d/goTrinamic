@@ -1,4 +1,4 @@
-package main
+package goTrinamic
 
 //
 //// SPIConfig holds the SPI settings.

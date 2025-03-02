@@ -1,4 +1,4 @@
-package main
+package goTrinamic
 
 type Pin interface {
 	High()
