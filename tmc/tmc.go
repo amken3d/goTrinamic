@@ -1,4 +1,6 @@
-package main
+//go:build tinygo
+
+package tmc
 
 import (
 	"github.com/orsinium-labs/tinymath"
@@ -7,7 +9,7 @@ import (
 
 type Driver struct {
 	comm      RegisterComm
-	address   uint8
+	Address   uint8
 	enablePin machine.Pin
 	stepper   Stepper
 }
@@ -15,7 +17,7 @@ type Driver struct {
 func NewDriver(comm RegisterComm, address uint8, enablePin machine.Pin, stepper Stepper) *Driver {
 	return &Driver{
 		comm:      comm,
-		address:   address,
+		Address:   address,
 		enablePin: enablePin,
 		stepper:   stepper,
 	}
@@ -27,7 +29,7 @@ func (driver *Driver) WriteRegister(reg uint8, value uint32) error {
 		return CustomError("communication interface not set")
 	}
 	// Use the communication interface (RegisterComm) to write the register
-	return driver.comm.WriteRegister(reg, value, driver.address)
+	return driver.comm.WriteRegister(reg, value, driver.Address)
 }
 
 // ReadRegister sends a register read command to the Driver and returns the read value.
@@ -36,7 +38,7 @@ func (driver *Driver) ReadRegister(reg uint8) (uint32, error) {
 		return 0, CustomError("communication interface not set")
 	}
 	// Use the communication interface (RegisterComm) to read the register
-	return driver.comm.ReadRegister(reg, driver.address)
+	return driver.comm.ReadRegister(reg, driver.Address)
 }
 
 // Begin initializes the Driver driver with power and motor parameters
@@ -115,7 +117,7 @@ func (driver *Driver) Begin(powerParams PowerStageParameters, motorParams MotorP
 	if err != nil {
 		return false
 	}
-	rampMode := NewRAMPMODE(driver.comm, driver.address)
+	rampMode := NewRAMPMODE(driver.comm, driver.Address)
 	rampMode.SetMode(PositioningMode)
 	gconf := NewGCONF()
 	gconf.EnPwmMode = true // Enable stealthChop PWM mode

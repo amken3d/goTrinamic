@@ -1,6 +1,7 @@
-package main
+package tmc
 
 import (
+	"github.com/amken3d/goTrinamic"
 	"machine"
 	"time"
 )
@@ -25,7 +26,7 @@ func monitorAllShadowRegisters(drivers []*Driver) {
 			gconfReg := NewGCONF()
 			rawGCONF, err := d.ReadRegister(GCONF)
 			if err != nil {
-				displayStr += "Driver " + string(d.address) + " error reading GCONF: " + err.Error() + "\n"
+				displayStr += "Driver " + string(d.Address) + " error reading GCONF: " + err.Error() + "\n"
 				continue
 			}
 			gconfReg.Unpack(rawGCONF)
@@ -33,7 +34,7 @@ func monitorAllShadowRegisters(drivers []*Driver) {
 			gstatReg := NewGSTAT()
 			rawGSTAT, err := d.ReadRegister(GSTAT)
 			if err != nil {
-				displayStr += "Driver " + string(d.address) + " error reading GSTAT: " + err.Error() + "\n"
+				displayStr += "Driver " + string(d.Address) + " error reading GSTAT: " + err.Error() + "\n"
 				continue
 			}
 			gstatReg.Unpack(rawGSTAT)
@@ -41,20 +42,20 @@ func monitorAllShadowRegisters(drivers []*Driver) {
 			ioinReg := NewIOIN()
 			rawIOIN, err := d.ReadRegister(IOIN)
 			if err != nil {
-				displayStr += "Driver " + string(d.address) + " error reading IOIN: " + err.Error() + "\n"
+				displayStr += "Driver " + string(d.Address) + " error reading IOIN: " + err.Error() + "\n"
 				continue
 			}
 			ioinReg.Unpack(rawIOIN)
 
 			// Build a display string for this driver.
-			displayStr += "Driver " + string(d.address) + ":\n" +
+			displayStr += "Driver " + string(d.Address) + ":\n" +
 				"  GCONF: Recalibrate=" + boolToStr(gconfReg.Recalibrate) +
 				" Faststandstill=" + boolToStr(gconfReg.Faststandstill) +
 				" EnPwmMode=" + boolToStr(gconfReg.EnPwmMode) + "\n" +
 				"  GSTAT: Reset=" + boolToStr(gstatReg.Reset) +
 				" DrvErr=" + boolToStr(gstatReg.DrvErr) +
 				" UvCp=" + boolToStr(gstatReg.UvCp) + "\n" +
-				"  IOIN: Version=" + ToHex8(ioinReg.Version) +
+				"  IOIN: Version=" + goTrinamic.ToHex8(ioinReg.Version) +
 				" DrvEnn=" + boolToStr(ioinReg.DrvEnn) + "\n\n"
 		}
 		latestRegDisplay = displayStr
@@ -121,7 +122,7 @@ func main() {
 			),
 		)
 		drivers = append(drivers, driver)
-		println("Created driver at address:", driver.address)
+		println("Created driver at address:", driver.Address)
 	}
 
 	// Start a single goroutine that polls all drivers and updates latestRegDisplay.

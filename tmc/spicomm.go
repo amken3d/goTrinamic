@@ -1,4 +1,6 @@
-package main
+//go:build tinygo
+
+package tmc
 
 import (
 	"machine"

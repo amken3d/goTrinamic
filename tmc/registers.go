@@ -1,4 +1,4 @@
-package main
+package tmc
 
 import (
 	math "github.com/orsinium-labs/tinymath"

@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4dc69be-a001-436f-b2e8-602987dbed60" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helpers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spicomm.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stepper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmc.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testregex.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmc2209/generated.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmc2240/registers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmc4361a/registers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmc4671/registers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmc5160/registers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmc5420/registers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/generator.go" beforeDir="false" />
-    </list>
+    <list default="true" id="c4dc69be-a001-436f-b2e8-602987dbed60" name="Changes" comment="updated go mod" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,8 +19,27 @@
   </component>
   <component name="GOROOT" url="file://$USER_HOME$/sdk/go1.23.6" />
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SHOW_TAGS" value="false" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "amken3d"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/amken3d/goTrinamic.git",
+    "accountId": "bdf5e27b-d2b4-44d1-9698-e307963886f1"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.cache/tinygo/goroot-0879206a7453f06630517e128ebe13b74dfb06ce522d12f3e7ec85d4f9db675e/src/machine/board_pico2.go" root0="SKIP_INSPECTION" />
   </component>
@@ -75,7 +72,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.tinygoplugin.services.TinyGoSettingsService"
+    "settings.editor.selected.configurable": "vcs.log"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -142,6 +139,22 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Sucessfully communicating with 5160 and 5240. 2240 is untested" />
+    <MESSAGE value="updated go mod" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated go mod" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

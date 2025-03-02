@@ -1,4 +1,4 @@
-package main
+package goTrinamic
 
 func ToHex(value uint32) string {
 	hexChars := "0123456789ABCDEF"

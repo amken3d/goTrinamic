@@ -1,4 +1,4 @@
-package main
+package tmc
 
 const maxVMAX = 8388096
 
