@@ -1,4 +1,4 @@
-package tmc
+package main
 
 import (
 	"github.com/orsinium-labs/tinymath"
@@ -9,12 +9,12 @@ import (
 func (stepper *Stepper) CurrentVelocityToVMAX() uint32 {
 	tref := float32(16777216) / (float32(stepper.Fclk) * 1000000)
 	r := stepper.VelocitySPS * stepper.GearRatio * float32(tref)
-	return constrain(uint32(r), 0, maxVMAX) // VMAX register value cannot exceed maxVMAX
+	return Constrain(uint32(r), 0, maxVMAX) // VMAX register value cannot exceed maxVMAX
 }
 func (stepper *Stepper) DesiredVelocityToVMAX(v float32) uint32 {
 	tref := 16777216 / (float32(stepper.Fclk) * 1000000)
 	r := tinymath.Round(v * stepper.GearRatio * tref)
-	return constrain(uint32(r), 0, maxVMAX) // VMAX register value cannot exceed maxVMAX
+	return Constrain(uint32(r), 0, maxVMAX) // VMAX register value cannot exceed maxVMAX
 }
 
 func (stepper *Stepper) DesiredAccelToAMAX(dacc float32, dVel float32) uint32 {
@@ -35,18 +35,18 @@ func (stepper *Stepper) DesiredSpeedToTSTEP(thrsSpeed uint32) uint32 {
 	_b := float32(16777216 / _a)
 	_c := float32(stepper.MSteps) / float32(256)
 	_d := uint32(_b * _c)
-	return constrain(_d, 0, 1048575)
+	return Constrain(_d, 0, 1048575)
 }
 
 func (stepper *Stepper) VMAXToTSTEP(vmax uint32) uint32 {
 	_b := float32(16777216 / vmax)
 	_c := float32(stepper.MSteps) / float32(256)
 	_d := tinymath.Round(_b * _c)
-	return constrain(uint32(_d), 0, 1048575)
+	return Constrain(uint32(_d), 0, 1048575)
 }
 
 // Constrain function to limit values to a specific range (supports multiple types).
-func constrain[T constraints.Ordered](value, min, max T) T {
+func Constrain[T constraints.Ordered](value, min, max T) T {
 	if value < min {
 		return min
 	} else if value > max {

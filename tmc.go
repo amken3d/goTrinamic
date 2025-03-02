@@ -1,20 +1,17 @@
-//go:build tinygo
-
-package tmc
+package main
 
 import (
 	"github.com/orsinium-labs/tinymath"
-	"machine"
 )
 
 type Driver struct {
 	comm      RegisterComm
 	Address   uint8
-	enablePin machine.Pin
+	enablePin Pin
 	stepper   Stepper
 }
 
-func NewDriver(comm RegisterComm, address uint8, enablePin machine.Pin, stepper Stepper) *Driver {
+func NewDriver(comm RegisterComm, address uint8, enablePin Pin, stepper Stepper) *Driver {
 	return &Driver{
 		comm:      comm,
 		Address:   address,
@@ -54,24 +51,24 @@ func (driver *Driver) Begin(powerParams PowerStageParameters, motorParams MotorP
 
 	// Configure driver settings
 	drvConf := NewDRV_CONF()
-	drvConf.DrvStrength = constrain(powerParams.drvStrength, 0, 3)
-	drvConf.BBMTime = constrain(powerParams.bbmTime, 0, 24)
-	drvConf.BBMClks = constrain(powerParams.bbmClks, 0, 15)
+	drvConf.DrvStrength = Constrain(powerParams.DrvStrength, 0, 3)
+	drvConf.BBMTime = Constrain(powerParams.BbmTime, 0, 24)
+	drvConf.BBMClks = Constrain(powerParams.BbmClks, 0, 15)
 	err = driver.WriteRegister(DRV_CONF, drvConf.Pack())
 	if err != nil {
 		return false
 	}
 
 	// Set global scaler
-	err = driver.WriteRegister(GLOBAL_SCALER, uint32(constrain(motorParams.globalScaler, 32, 256)))
+	err = driver.WriteRegister(GLOBAL_SCALER, uint32(Constrain(motorParams.GlobalScaler, 32, 256)))
 	if err != nil {
 		return false
 	}
 
 	// Set initial currents and delay
 	iholdrun := NewIHOLD_IRUN()
-	iholdrun.Ihold = constrain(motorParams.ihold, 0, 31)
-	iholdrun.Ihold = constrain(motorParams.irun, 0, 31)
+	iholdrun.Ihold = Constrain(motorParams.Ihold, 0, 31)
+	iholdrun.Ihold = Constrain(motorParams.Irun, 0, 31)
 	iholdrun.IholdDelay = 7
 	err = driver.WriteRegister(IHOLD_IRUN, iholdrun.Pack())
 	if err != nil {
@@ -91,9 +88,9 @@ func (driver *Driver) Begin(powerParams PowerStageParameters, motorParams MotorP
 	} else {
 		pwmconf.PwmFreq = 0b01 // Recommended: 35kHz with internal 12MHz clock
 	}
-	pwmconf.PwmGrad = uint8(motorParams.pwmGradInitial)
-	pwmconf.PwmOfs = uint8(motorParams.pwmOfsInitial)
-	pwmconf.Freewheel = motorParams.freewheeling
+	pwmconf.PwmGrad = uint8(motorParams.PwmGradInitial)
+	pwmconf.PwmOfs = uint8(motorParams.PwmOfsInitial)
+	pwmconf.Freewheel = motorParams.Freewheeling
 	err = driver.WriteRegister(PWMCONF, pwmconf.Pack())
 	if err != nil {
 		return false

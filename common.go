@@ -1,4 +1,4 @@
-package tmc
+package main
 
 // CommonRegisters holds the intersection of registers that
 // appear on TMC5240, TMC2240, and TMC5160.

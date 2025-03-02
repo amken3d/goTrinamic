@@ -1,4 +1,4 @@
-package goTrinamic
+package main
 
 func ToHex(value uint32) string {
 	hexChars := "0123456789ABCDEF"
@@ -20,4 +20,12 @@ func ToHex8(value uint8) string {
 		result += string(hexChars[nibble])
 	}
 	return "0x" + result
+}
+
+// BoolToStr converts a bool to "true" or "false"
+func BoolToStr(b bool) string {
+	if b {
+		return "true"
+	}
+	return "false"
 }

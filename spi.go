@@ -1,4 +1,4 @@
-package goTrinamic
+package main
 
 // SPI represents a SPI bus. It is implemented by the machine.SPI type.
 type SPI interface {
@@ -10,4 +10,8 @@ type SPI interface {
 	// Transfer writes a single byte out on the SPI bus and receives a byte at the same time.
 	// If you want to transfer multiple bytes, it is more efficient to use Tx instead.
 	Transfer(b byte) (byte, error)
+}
+
+func main() {
+
 }

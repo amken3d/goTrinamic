@@ -1,23 +1,23 @@
-package tmc
+package main
 
 const maxVMAX = 8388096
 
 // PowerStageParameters represents the power stage parameters
 type PowerStageParameters struct {
-	drvStrength uint8
-	bbmTime     uint8
-	bbmClks     uint8
+	DrvStrength uint8
+	BbmTime     uint8
+	BbmClks     uint8
 }
 
 // MotorParameters represents the motor parameters
 type MotorParameters struct {
-	globalScaler   uint16
-	ihold          uint8
-	irun           uint8
+	GlobalScaler   uint16
+	Ihold          uint8
+	Irun           uint8
 	iholddelay     uint8
-	pwmGradInitial uint16
-	pwmOfsInitial  uint16
-	freewheeling   uint8
+	PwmGradInitial uint16
+	PwmOfsInitial  uint16
+	Freewheeling   uint8
 }
 
 // MotorDirection defines motor direction constants

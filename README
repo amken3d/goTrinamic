@@ -1,0 +1,61 @@
+
+# goTrinamic
+
+## Description
+
+This project provides a unified golang driver for TMC5160, TMC5240 and TMC2240 stepper drivers. This package abstracts the PSI and PIN interfaces which will be provided by the machine package of tinygo
+
+## Technologies Used
+
+- Go (version 1.23)
+- Any additional libraries or tools used in the project.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd your-repository
+   ```
+3. Install dependencies and build the project:
+   ```bash
+   go build ./...
+   ```
+
+## Usage
+
+Provide instructions on how to use your application. For example:
+```bash
+./your-executable
+```
+
+If the project includes any configuration files or environment variables, describe them here.
+
+## Features
+
+- List of key features included in the project.
+
+## Contribution
+
+Contributions are welcome! Follow these steps to contribute:
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Description of changes."
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the [LICENSE NAME] License. See the `LICENSE` file for details.
