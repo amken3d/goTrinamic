@@ -1,4 +1,4 @@
-module goTrinamic
+module github.com/amken3d/goTrinamic
 
 go 1.23.0
 
